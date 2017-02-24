@@ -1,6 +1,6 @@
 <template>
     <div class="subtmpl">
-        <!-- 利用mint-ui中的swipe组件实现轮播图 -->
+      
         <mt-swipe :auto="2000">
             <mt-swipe-item v-for="(item,index) in imagelist" :key="index">
                 <img class="img" :src="item.img" alt="轮播图">

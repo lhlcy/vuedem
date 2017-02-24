@@ -55,14 +55,6 @@
 export default{
 	data(){
 		return {
-			// list: [{
-			// 			url: 'http://www.itcast.cn/subject/phoneweb/index.html',
-			// 			img: 'http://ofv795nmp.bkt.clouddn.com/vuelogobanner1.jpg'
-			// 		}, {
-			// 			url: 'http://www.itcast.cn/subject/phoneweb/index.html',
-			// 			img: 'http://ofv795nmp.bkt.clouddn.com/vuelogobanner2-1.jpg'
-			// 		}]
-		 		
 			list:[]
 		}
 	},

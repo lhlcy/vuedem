@@ -64,12 +64,12 @@
         methods:{
            getdata(){
             //负责根据传入的id值从 /api/getnew/:newid 去获取到真正的数据
-            // 1.0  获取到url传入的id值
+            //  获取到url传入的id值
             let id  = this.$route.params.id;
-            //2.0 拼接url
+            //拼接url
             let url =common.apihost +'/api/getnew/' + id;
 
-            //3.0 ajax请求获得数据
+            // ajax请求获得数据
             this.$http.get(url).then(res=>{
                 //获取图文资讯对象，但是message是一个数组，所以应该取0索引位置数据
                 this.article  =res.body.message[0];

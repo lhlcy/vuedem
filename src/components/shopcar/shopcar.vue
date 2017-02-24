@@ -117,14 +117,14 @@ export default{
 	methods:{
 		//去结算
 		tosettemt(){
-			//1.0 判断是否有选择至少一个商品
+			// 判断是否有选择至少一个商品
 			let newarr= this.values.filter(c=>c ==true);
 			if(newarr.length==0){
 				Toast('请至少选择一个商品');
 				return;
 			}
 
-			//2.0 判断是否有登录
+			// 判断是否有登录
 			let userid = getUserId();
 			if(!userid){
 				//应该跳转到登录组件
@@ -136,16 +136,16 @@ export default{
 		},
 		//获取到数量选择组件中的数值
 		getcount(resobj){
-			//1.0 判断resobj中的type类型
+			//判断resobj中的type类型
 			if(resobj.type =='add'){
 				//增加一个商品数量
 				this.add(resobj);
-				//2.0 更新掉shopcarlist中当前商品对于的数量
+				//更新掉shopcarlist中当前商品对于的数量
 				this.updateshopcarlist(1,resobj.goodsid);
 			}else if(resobj.type=="substrict"){
 				//减少一个商品数量
 				subStrictItem(resobj.goodsid);
-				//2.0 更新掉shopcarlist中当前商品对于的数量
+				// 更新掉shopcarlist中当前商品对于的数量
 				this.updateshopcarlist(-1,resobj.goodsid);
 			}
 
@@ -154,7 +154,7 @@ export default{
 			setItem({goodsid:resobj.goodsid,count:1});
 		},
 		updateshopcarlist(count,goodsid){
-			//1.0 找到商品的数据
+			// 找到商品的数据
 			for(let i = 0; i<this.shopcarlist.length;i++){
 				if(this.shopcarlist[i].id == goodsid){
 					this.shopcarlist[i].count = this.shopcarlist[i].count + count;
@@ -163,7 +163,7 @@ export default{
 		},
 		//根据商品id获取商品数据
 		initPageData(){
-			//1.0 从localStorage中获取所有的商品id
+			// 从localStorage中获取所有的商品id
 			// arr的数据格式： [{goodsid:1,count:1},{goodsid:1,count:2}{},{}]
 			let arr = getItem();
 			let goodsObj = {}; //负责将goodsid的值当做属性名称，count值当做属性值,格式：{89,12,90,1}
@@ -179,14 +179,14 @@ export default{
 				}
 			});
 
-			//1.0.1 将goodsObj中的属性名称拿出来
+			// 将goodsObj中的属性名称拿出来
 			let idarr = [];
 			for(let goodsidvalue in goodsObj){
 				idarr.push(goodsidvalue);
 			}
 			let ids = idarr.join(',');
 
-			//2.0 请求api获取数据
+			// 请求api获取数据
 			let url = common.apihost+'/api/goods/getshopcarlist/'+ids;
 			this.$http.get(url).then(res=>{
 //

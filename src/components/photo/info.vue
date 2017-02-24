@@ -8,7 +8,7 @@
                 {{imgdata.click}}次浏览
             </p>
         </div>
-        <!--2.0 使用MUI中的9宫格实现属于这个图片的其他相关图片-->
+      
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li v-for="(item, index) in imglist"
                 class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -82,19 +82,19 @@
         },
         methods:{
             getimgdata(){
-                //1.0 获取到图片的id
+          
                 let id = this.$route.params.id;
-                //2.0 发出ajax请求获取到数据
+              
                 let url = common.apihost + '/api/getimageInfo/' + id;
                 this.$http.get(url).then(res=>{
                    this.imgdata =  res.body.message[0];
                 });
             },
             getthumbimgs(){
-                //1.0 获取到图片的id
+              
                 let id = this.$route.params.id;
                 let url = common.apihost + '/api/getthumimages/' + id;
-                let imghost = common.imghost; //图片云服务器的域名
+                let imghost = common.imghost; 
                 this.$http.get(url).then(res=>{
                    //2.0 res.body.message中返回的是一个数组[{src:'/upload/...'}]
                     res.body.message.forEach(item=>{

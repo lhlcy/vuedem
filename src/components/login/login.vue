@@ -27,18 +27,18 @@
         },
         methods:{
             login(){
-                //1.0 获取页面上的输入值
+                //获取页面上的输入值
                 let username = this.$refs.uname.value;
                 let upwd = this.$refs.upwd.value;
 
-                //2.0 将用户名和密码发送给api判断是否正确,这里由于没有api所以我们做一个假的
+                // 将用户名和密码发送给api判断是否正确,这里由于没有api所以我们做一个假的
                 let userid =0;
                 if(username =='ivan'&& upwd=='123'){
-                    //1.0 将userid的值存储到sessionStorage中
+                    //将userid的值存储到sessionStorage中
                     userid = 1;
                     setUserId(userid);
 
-                    // 2.0 跳转到购物车页面
+                    // 跳转到购物车页面
                     this.$router.push({name:'shopcar'});
 
                 }else{

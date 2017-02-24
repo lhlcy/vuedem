@@ -17,11 +17,7 @@
                 <div class="user" v-text="item.user_name"></div>
                 <div class="time">{{item.add_time | fmtdate('YYYY-MM-DD HH:mm:ss')}}</div>
             </div>
-            <!--<div class="outwarp">-->
-                <!--<div class="content" >这是一条评论这是一条评论</div>-->
-                <!--<div class="user">匿名用户</div>-->
-                <!--<div class="time">2018-292-12</div>-->
-            <!--</div>-->
+         
 
         </div>
 
@@ -69,7 +65,7 @@
 </style>
 <script>
     import common from '../../kits/common.js'
-    import { Toast } from 'mint-ui'; //导入mint-ui中的提示组件
+    import { Toast } from 'mint-ui'; 
 
     export default{
         data(){
@@ -83,21 +79,21 @@
         }
         ,
         methods:{
-           //1.0 提交评论
+           //提交评论
             postcomment(){
                let url = common.apihost+'/api/postcomment/'+this.artid;
-                //如何去获取到或页面上的评论的内容可以通过  console.log(this.$refs.postcontent);
-                //1.0 通过vue来获取textarea的值
+                //可以通过  console.log(this.$refs.postcontent);
+             
                 let contentText = this.$refs.postcontent.value;
                 //判断是否有值
                 if(!contentText || contentText.trim().length <=0){
                     Toast('评论内容必须填写');
-                    return; //阻断这个方法下面的代码继续运行
+                    return;
                 }
                 //2.0 将评论数据提交到服务器
                 this.$http.post(url,{content:contentText},{emulateJSON:true})
                         .then(res=>{
-                    //利用mint-ui中的Toast 提示用户提交成功
+                   
                     Toast('评论提交成功');
 
                     //重新加载评论
@@ -108,14 +104,11 @@
 
                 },res => {console.log('评论提交失败');});
             },
-           //2.0 获取评论
+           // 获取评论
             getcomment(pageindex,isreload){
                 let url = common.apihost+'/api/getcomments/'+this.artid+'?pageindex='+pageindex;
                 this.$http.get(url).then(res=>{
-                    //由于我们要实现加载更多功能，所以这里不应该使最新数据覆盖数组，而是将最新数据追加到comments中
-                    //this.comments = res.body.message;
-                    //这种写法可能存在一个问题不会及时刷新页面
-//                    this.comments = this.comments.concat(res.body.message);
+              
                     if(isreload){
                         this.comments = res.body.message;
                     }else{
@@ -126,11 +119,11 @@
                     console.log('获取评论数据失败');
                 });
             },
-            //3.0 获取跟多数据
+            // 获取跟多数据
             getmore(){
-                //1.0 将pageindex加一
+              
                 this.pageindex++;
-                //2.0 讲自增以后的pageindex值传入getcomment方法即可获取数据
+              
                 this.getcomment(this.pageindex);
             }
         },

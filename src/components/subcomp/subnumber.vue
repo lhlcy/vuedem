@@ -40,13 +40,13 @@
             this.resObj.goodsid = this.goodsid>0?this.goodsid:0;
         },
         methods:{
-            //1.0 加1
+         
            add(){
                 this.resObj.count++;
                this.resObj.type=ADD;
                 this.notiflycount();
            },
-            //2.0 减1
+      
             substrict(){
                 //保证自减到1为止
                 if(this.resObj.count <= 1){

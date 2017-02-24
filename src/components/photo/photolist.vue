@@ -13,7 +13,7 @@
               </ul>
           </div>
 
-        <!--2.0 图片列表-->
+      
         <div class="imglist">
             <ul>
                 <li v-for="item in list">
